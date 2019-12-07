@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class AbstractHand {
 
-	protected List<Card> cardInHand = new ArrayList<>();
+	protected List<Card> cardsInHand = new ArrayList<>();
 
 	public AbstractHand() {
 	}
@@ -17,12 +17,12 @@ public abstract class AbstractHand {
 
 
 	public void addCard(Card card) {
-		cardInHand.add(card);
+		cardsInHand.add(card);
 	}
 
 	@Override
 	public String toString() {
-		return "AbstractHand [cardInHand=" + cardInHand + "]";
+		return "AbstractHand [cardInHand=" + cardsInHand + "]";
 	}
 
 }

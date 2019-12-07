@@ -1,9 +1,6 @@
 package com.skilldistillery.cards.blackjack;
 
-import java.util.List;
-
 import com.skilldistillery.cards.common.AbstractHand;
-import com.skilldistillery.cards.common.Card;
 
 public class BlackjackHand extends AbstractHand{
 
@@ -11,7 +8,6 @@ public class BlackjackHand extends AbstractHand{
 	public BlackjackHand() {
 	}
 	
-	List<Card> cardsInHand;
 	
 	public boolean isBlackjack() {
 		if (cardsInHand.get(0).getValue() == 21){

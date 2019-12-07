@@ -10,15 +10,15 @@ public class BlackjackHand extends AbstractHand{
 	
 	
 	public boolean isBlackjack() {
-		if (cardsInHand.get(0).getValue() == 21){
-			System.out.println("Blackjack");
+		if (getHandValue() == 21){
+//			System.out.println("Blackjack");
 			return true;
 		}
 		return false;
 	}
 	public boolean isBust() {
-		if (cardsInHand.get(0).getValue() >= 22){
-			System.out.println("Bust");
+		if (getHandValue() >= 22){
+//			System.out.println("Bust");
 			return true;
 		}
 		return false;

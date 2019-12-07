@@ -27,8 +27,16 @@ public class BlackjackApp {
 
 		System.out.println("Player: " + player.getHand().toString() + player.getHand().getHandValue());
 		System.out.println("Dealer: " + dealer.getHand().toString() + dealer.getHand().getHandValue());
-
-		while (player.getHand().getHandValue() < 21 || dealer.getHand().getHandValue() < 21) {
+		
+		if(player.getHand().isBlackjack() == true) {
+			System.out.println("BLACKJACK!!!");
+		}
+		if(dealer.getHand().isBlackjack() == true) {
+			System.out.println("BLACKJACK!!!");
+		}
+		
+		
+		while (player.getHand().getHandValue() < 21) {
 			System.out.println("Would you like to hit or stay? ");
 			String userInput = sc.next();
 			
@@ -39,19 +47,24 @@ public class BlackjackApp {
 				System.out.println("Player: " + player.getHand().getHandValue());
 
 			}
-			if (dealer.getHand().getHandValue() < 17) {
-				dealer.getHand().addCard(deck.dealCard());
-				System.out.println("Dealer: " + dealer.getHand());
-				System.out.println("Dealer: " + dealer.getHand().getHandValue());
-			}
 
-			else if (userInput.equalsIgnoreCase("stay")) {
+			if (userInput.equalsIgnoreCase("stay")) {
 				System.out.println(player.getHand().getHandValue());
-//			if()
+			}
+			if(player.getHand().isBust() == true) {
+				System.out.println("BUST!!!");
+				break;
+			}
 
 			}
+	
+		if (dealer.getHand().getHandValue() < 17) {
+			dealer.getHand().addCard(deck.dealCard());
+			System.out.println("Dealer: " + dealer.getHand());
+			System.out.println("Dealer: " + dealer.getHand().getHandValue());
+		}
 		}
 
 	}
 
-}
+

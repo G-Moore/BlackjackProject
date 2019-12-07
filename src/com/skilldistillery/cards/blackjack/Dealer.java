@@ -13,7 +13,7 @@ public class Dealer {
 
 	@Override
 	public String toString() {
-		return "Player [hand=" + hand + ", getHand()=" + getHand() + "]";
+		return "Dealer [hand=" + hand + ", getHand()=" + getHand() + "]";
 	}
 
 

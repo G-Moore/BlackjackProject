@@ -30,7 +30,11 @@ public class BlackjackHand extends AbstractHand{
 	
 	@Override
 	public int getHandValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		int totalVal = 0;
+		for (int i = 0; i < cardsInHand.size(); i++) {
+			totalVal += cardsInHand.get(i).getValue();
+		}
+		return totalVal;
 	}
+	
 }

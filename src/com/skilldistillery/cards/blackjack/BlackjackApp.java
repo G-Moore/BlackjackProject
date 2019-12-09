@@ -9,7 +9,7 @@ public class BlackjackApp {
 	Dealer dealer = new Dealer();
 	Deck deck = new Deck();
 	Scanner sc = new Scanner(System.in);
-
+	BlackjackHand bjh = new BlackjackHand();
 	public static void main(String[] args) {
 		BlackjackApp app = new BlackjackApp();
 
@@ -17,6 +17,7 @@ public class BlackjackApp {
 	}
 
 	public void run() {
+		
 		deck.createDeck();
 
 		player.getHand().addCard(deck.dealCard());
@@ -27,44 +28,66 @@ public class BlackjackApp {
 
 		System.out.println("Player: " + player.getHand().toString() + player.getHand().getHandValue());
 		System.out.println("Dealer: " + dealer.getHand().toString() + dealer.getHand().getHandValue());
-		
-		if(player.getHand().isBlackjack() == true) {
-			System.out.println("BLACKJACK!!!");
+
+		while (bjh.isBlackjack() == true || bjh.isBust() == true){
+		if (player.getHand().isBust() == true) {
+			System.out.println("Player: BUST!!!");
+			break;
 		}
-		if(dealer.getHand().isBlackjack() == true) {
-			System.out.println("BLACKJACK!!!");
+		if (player.getHand().isBlackjack() == true) {
+			System.out.println("Player: BLACKJACK!!!");
+			break;
 		}
-		
-		
+		if (dealer.getHand().isBust() == true) {
+			System.out.println("Dealer: BUST!!!");
+			break;
+		}
+		if (dealer.getHand().isBlackjack() == true) {
+			System.out.println("Dealer: BLACKJACK!!!");
+			break;
+		}
+		}
+
 		while (player.getHand().getHandValue() < 21) {
-			System.out.println("Would you like to hit or stay? ");
-			String userInput = sc.next();
-			
-			
-			if (userInput.equalsIgnoreCase("hit")) {
+			System.out.println("Would you like to \n1: hit \n2: stay? ");
+			int userInput = sc.nextInt();
+
+			if (userInput == 1) {
 				player.getHand().addCard(deck.dealCard());
 				System.out.println("Player: " + player.getHand());
 				System.out.println("Player: " + player.getHand().getHandValue());
-
 			}
 
-			if (userInput.equalsIgnoreCase("stay")) {
-				System.out.println(player.getHand().getHandValue());
-			}
-			if(player.getHand().isBust() == true) {
-				System.out.println("BUST!!!");
+			else {
+				System.out.println("PLayer: " + player.getHand());
+				System.out.println("Player: " + player.getHand().getHandValue());
 				break;
 			}
 
-			}
-	
-		if (dealer.getHand().getHandValue() < 17) {
+		}
+		if (player.getHand().isBust() == true) {
+			System.out.println("Player: BUST!!!");
+		}
+
+		while (dealer.getHand().getHandValue() < 17 && player.getHand().getHandValue() <= 21) {
 			dealer.getHand().addCard(deck.dealCard());
 			System.out.println("Dealer: " + dealer.getHand());
 			System.out.println("Dealer: " + dealer.getHand().getHandValue());
-		}
+
+			if (dealer.getHand().getHandValue() == player.getHand().getHandValue()) {
+				System.out.println("Push");
+			}
+			if (dealer.getHand().isBust() == true) {
+				System.out.println("Dealer: BUST!!!");
+				System.out.println("Player Wins!");
+			} 
+			else if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
+				System.out.println("Dealer Wins!");
+			} else {
+				System.out.println("Player Wins!");
+			}
 		}
 
 	}
 
-
+}

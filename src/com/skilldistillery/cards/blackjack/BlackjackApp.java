@@ -21,24 +21,23 @@ public class BlackjackApp {
 		newHand();
 		isBust();
 		isBlackjack();
-		
+
 //		checkDealForBust();
-		
+
 //		checkDealForBlackjack();
 
 		playerMenu();
 		isBust();
-		
+
 //		checkDealForBust();
-		
 
 		dealerUnder();
 		isBust();
-		
+
 //		checkDealForBust();
 
 		while (player.getHand().getHandValue() <= 21) {
-			
+
 			if (dealer.getHand().getHandValue() == player.getHand().getHandValue()) {
 				System.out.println("Push");
 				break;
@@ -47,8 +46,7 @@ public class BlackjackApp {
 				System.out.println("Dealer: BUST!!!");
 				System.out.println("Player Wins!");
 				break;
-			}
-			else if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
+			} else if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
 				System.out.println("Dealer Wins!");
 				break;
 
@@ -137,35 +135,33 @@ public class BlackjackApp {
 		System.out.println("Player: " + player.getHand().toString() + player.getHand().getHandValue());
 		System.out.println("Dealer: " + dealer.getHand().toString() + dealer.getHand().getHandValue());
 	}
+
 	public boolean isBlackjack() {
-		if (player.getHand().getHandValue() == 21){
+		if (player.getHand().getHandValue() == 21) {
 			System.out.println("Player has Blackjack");
 			System.out.println("Player Wins!");
 			return true;
 		}
-		if (dealer.getHand().getHandValue() == 21){
+		if (dealer.getHand().getHandValue() == 21) {
 			System.out.println("Blackjack has Blackjack");
 			System.out.println("Dealer Wins!");
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
+
 	public boolean isBust() {
-		if (player.getHand().getHandValue() > 21){
+		if (player.getHand().getHandValue() > 21) {
 			System.out.println("Player Bust ");
 			System.out.println("Dealer Wins ");
-//			System.out.println(toString() + getHandValue());
 			return true;
 		}
-		if (dealer.getHand().getHandValue() > 21){
+		if (dealer.getHand().getHandValue() > 21) {
 			System.out.println("Dealer Bust ");
 			System.out.println("Player Wins ");
-//			System.out.println(toString() + getHandValue());
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
